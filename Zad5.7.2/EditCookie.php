@@ -1,5 +1,5 @@
 <?php
-    if(isset($_POST['cookie_to_change']) && isset($_POST['changed_value']) && isset($_POST['change_cookie'])) {
+    if(!empty($_POST['cookie_to_change']) && !empty($_POST['changed_value']) && !empty($_POST['change_cookie'])) {
         foreach ($_COOKIE as $key => $value) {
             if($key == $_POST['cookie_to_change']) {
                 setcookie($key, $_POST['changed_value']);

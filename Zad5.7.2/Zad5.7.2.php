@@ -1,8 +1,8 @@
 <?php
-    if(isset($_POST['add_new_cookie'])){
-        if (isset($_POST['new_cookie_name']) && isset($_POST['new_cookie_value'])) {
+    if(!empty($_POST['add_new_cookie'])){
+        if (!empty($_POST['new_cookie_name']) && !empty($_POST['new_cookie_value'])) {
             setcookie($_POST['new_cookie_name'], $_POST['new_cookie_value']);
-        } elseif (isset($_POST['new_cookie_name']) && isset($_POST['new_cookie_value']) && isset($_POST['new_cookie_expired'])) {
+        } elseif (!empty($_POST['new_cookie_name']) && !empty($_POST['new_cookie_value']) && !empty($_POST['new_cookie_expired'])) {
             $data = strtotime($_POST['new_cookie_expired']);
             setcookie($_POST['new_cookie_name'], $_POST['new_cookie_value'], $data);
         } else {
@@ -32,7 +32,7 @@
         <input type="submit" name="display_all_cookies" value="Wyświetl wszystkie ciasteczka"> <br>
     </form>
     <?php
-    if(isset($_POST['display_all_cookies'])){
+    if(!empty($_POST['display_all_cookies'])){
         foreach ($_COOKIE as $key => $value) {
             echo "<p>nazwa: " . $key . ", wartość: " . $value . "</p>";
         }
@@ -54,8 +54,8 @@
         <input name="search" type="submit" value="Szukaj">
     </form>
     <?php
-        if(isset($_POST['search'])) {
-            if (isset($_POST['search_bar'])) {
+        if(!empty($_POST['search'])) {
+            if (!empty($_POST['search_bar'])) {
                 foreach ($_COOKIE as $key => $value) {
                     if ($key == $_POST['search_bar'] || $value == $_POST['search_bar']) {
                         echo "<p>nazwa: " . $key . ", wartość: " . $value . "</p>";

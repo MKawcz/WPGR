@@ -1,5 +1,5 @@
 <?php
-    if(isset($_POST['cookie_to_delete']) && isset($_POST['delete_cookie'])) {
+    if(!empty($_POST['cookie_to_delete']) && !empty($_POST['delete_cookie'])) {
         foreach ($_COOKIE as $key => $value) {
             if($key == $_POST['cookie_to_delete']) {
                 setcookie($key, "", time() - 3600);
